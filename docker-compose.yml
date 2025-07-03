@@ -1,0 +1,59 @@
+# docker-compose.yml
+version: '3.8'
+
+services:
+  postgres_db:
+    image: postgres:16-alpine # Usar uma versão específica e leve do PostgreSQL
+    container_name: postgres_db
+    environment:
+      POSTGRES_DB: creditos_db
+      POSTGRES_USER: user
+      POSTGRES_PASSWORD: password
+    volumes:
+      # A linha abaixo foi removida em uma atualização anterior, pois o Flyway gerencia as migrations
+      # - ./db/init.sql:/docker-entrypoint-initdb.d/init.sql
+      - postgres_data:/var/lib/postgresql/data # Volume persistente para os dados
+    ports:
+      - "5432:5432" # Mapeia a porta do PostgreSQL
+    healthcheck: # Healthcheck para garantir que o DB está pronto
+      test: ["CMD-SHELL", "pg_isready -U user -d creditos_db"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+
+  backend:
+    build:
+      context: ./backend # Onde está o Dockerfile do backend
+      dockerfile: Dockerfile
+    container_name: desafio_creditos_backend
+    ports:
+      - "8080:8080"
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:postgresql://postgres_db:5432/creditos_db
+      SPRING_DATASOURCE_USERNAME: user
+      SPRING_DATASOURCE_PASSWORD: password
+    depends_on:
+      postgres_db:
+        condition: service_healthy # Garante que o DB esteja saudável antes de iniciar o backend
+    # Para desenvolvimento, você pode montar o volume para hot-reload (opcional)
+    # volumes:
+    #   - ./backend:/app
+
+  frontend:
+    build:
+      context: ./frontend # Onde está o Dockerfile do frontend
+      dockerfile: Dockerfile
+    container_name: desafio_creditos_frontend
+    ports:
+      - "4200:80" # Mapeia a porta 80 do Nginx no container para a porta 4200 do host
+    depends_on:
+      - backend # Garante que o backend esteja rodando antes de iniciar o frontend
+    environment:
+      # Variável de ambiente para a URL do backend no frontend, se necessário
+      # Isso seria usado se o Angular fosse configurado para ler uma variável de ambiente
+      # Por enquanto, o Angular está hardcoded para localhost:8080
+      API_URL: http://backend:8080/api
+
+volumes:
+  postgres_data: # Define o volume persistente para o PostgreSQL
+

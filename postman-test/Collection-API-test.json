@@ -1,0 +1,172 @@
+{
+	"info": {
+		"_postman_id": "c1a2b3c4-d5e6-7890-1234-567890abcdef",
+		"name": "Desafio Creditos API",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_collection_link": "https://www.postman.com/collections/c1a2b3c4-d5e6-7890-1234-567890abcdef"
+	},
+	"item": [
+		{
+			"name": "Consultar Creditos por Numero NFS-e",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/api/creditos/NFSE001",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"creditos",
+						"NFSE001"
+					]
+				},
+				"description": "Retorna uma lista de créditos constituídos com base no número da NFS-e."
+			},
+			"response": []
+		},
+		{
+			"name": "Consultar Detalhes de Credito por Numero Credito",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/api/creditos/credito/CRED001",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"creditos",
+						"credito",
+						"CRED001"
+					]
+				},
+				"description": "Retorna os detalhes de um crédito constituído específico com base no número do crédito constituído."
+			},
+			"response": []
+		},
+		{
+			"name": "Consultar Creditos por Numero NFS-e (Outro Exemplo)",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/api/creditos/NFSE003",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"creditos",
+						"NFSE003"
+					]
+				},
+				"description": "Exemplo de consulta por NFS-e que possui múltiplos créditos."
+			},
+			"response": []
+		},
+		{
+			"name": "Consultar Detalhes de Credito por Numero Credito (Outro Exemplo)",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/api/creditos/credito/CRED005",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"creditos",
+						"credito",
+						"CRED005"
+					]
+				},
+				"description": "Exemplo de consulta por número de crédito específico."
+			},
+			"response": []
+		},
+		{
+			"name": "Consultar Creditos por NFS-e Inexistente (Espera 404)",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/api/creditos/NFSE_INEXISTENTE",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"creditos",
+						"NFSE_INEXISTENTE"
+					]
+				},
+				"description": "Testa a resposta para uma NFS-e que não existe, esperando status 404 Not Found."
+			},
+			"response": []
+		},
+		{
+			"name": "Consultar Credito por Numero Credito Inexistente (Espera 404)",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/api/creditos/credito/CRED_INEXISTENTE",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"creditos",
+						"credito",
+						"CRED_INEXISTENTE"
+					]
+				},
+				"description": "Testa a resposta para um número de crédito que não existe, esperando status 404 Not Found."
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "baseUrl",
+			"value": "http://localhost:8080",
+			"type": "string"
+		}
+	]
+}
