@@ -102,7 +102,6 @@ desafio-creditos/
 │   ├── src/
 │   ├── angular.json
 │   ├── package.json
-│   ├── tailwind.config.js
 │   ├── Dockerfile            # Dockerfile para o frontend
 │   └── nginx.conf            # Configuração Nginx para servir o Angular
 ├── db/                       # Contém os scripts SQL para Flyway
