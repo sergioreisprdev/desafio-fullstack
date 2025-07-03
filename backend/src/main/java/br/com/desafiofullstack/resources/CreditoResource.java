@@ -58,5 +58,23 @@ public class CreditoResource {
 		return creditoDto.map(value -> new ResponseEntity<>(value, HttpStatus.OK))
 				.orElseGet(() -> new ResponseEntity<>(HttpStatus.NOT_FOUND));
 	}
+	
+	/**
+	 * GET /api/creditos
+	 * Retorna todos os créditos constituídos.
+	 *
+	 * @return Lista de todos os créditos em formato DTO.
+	 */
+	@GetMapping
+	public ResponseEntity<List<CreditoResponseDto>> getAllCreditos() {
+	    List<CreditoResponseDto> creditos = creditoService.getAllCreditos();
+	    return new ResponseEntity<>(creditos, HttpStatus.OK);
+	}
+	
+	@GetMapping("/teste")
+	public ResponseEntity<String> teste() {
+	    return ResponseEntity.ok("API está funcionando");
+	}
+
 
 }

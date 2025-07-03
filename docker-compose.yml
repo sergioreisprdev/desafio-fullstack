@@ -1,22 +1,19 @@
-# docker-compose.yml
-version: '3.8'
-
 services:
   postgres_db:
     image: postgres:16-alpine # Usar uma versão específica e leve do PostgreSQL
     container_name: postgres_db
     environment:
       POSTGRES_DB: creditos_db
-      POSTGRES_USER: user
-      POSTGRES_PASSWORD: password
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
     volumes:
       # A linha abaixo foi removida em uma atualização anterior, pois o Flyway gerencia as migrations
       # - ./db/init.sql:/docker-entrypoint-initdb.d/init.sql
       - postgres_data:/var/lib/postgresql/data # Volume persistente para os dados
     ports:
-      - "5432:5432" # Mapeia a porta do PostgreSQL
+      - "15432:5432" # Mapeia a porta do PostgreSQL
     healthcheck: # Healthcheck para garantir que o DB está pronto
-      test: ["CMD-SHELL", "pg_isready -U user -d creditos_db"]
+      test: ["CMD-SHELL", "pg_isready -U postgres -d creditos_db"]
       interval: 5s
       timeout: 5s
       retries: 5
@@ -30,8 +27,8 @@ services:
       - "8080:8080"
     environment:
       SPRING_DATASOURCE_URL: jdbc:postgresql://postgres_db:5432/creditos_db
-      SPRING_DATASOURCE_USERNAME: user
-      SPRING_DATASOURCE_PASSWORD: password
+      SPRING_DATASOURCE_USERNAME: postgres
+      SPRING_DATASOURCE_PASSWORD: postgres
     depends_on:
       postgres_db:
         condition: service_healthy # Garante que o DB esteja saudável antes de iniciar o backend

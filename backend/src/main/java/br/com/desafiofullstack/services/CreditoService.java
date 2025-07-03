@@ -38,6 +38,14 @@ public class CreditoService {
         return creditoRepository.findByNumeroCredito(numeroCredito)
                 .map(this::convertToDto);
     }
+    
+    public List<CreditoResponseDto> getAllCreditos() {
+        return creditoRepository.findAll()
+            .stream()
+            .map(this::convertToDto)
+            .collect(Collectors.toList());
+    }
+
 
     /**
      * Converte uma entidade Credito para um CreditoResponseDto.

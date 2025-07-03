@@ -1,0 +1,14 @@
+/home/sergio-ufpi/desafio-tecnico-fullstack-creditos/backend/src/main/java/br/com/desafiofullstack/DesafiofullstackApplication.java
+/home/sergio-ufpi/desafio-tecnico-fullstack-creditos/backend/src/main/java/br/com/desafiofullstack/config/CorsConfiguration.java
+/home/sergio-ufpi/desafio-tecnico-fullstack-creditos/backend/src/main/java/br/com/desafiofullstack/config/SwaggerConfig.java
+/home/sergio-ufpi/desafio-tecnico-fullstack-creditos/backend/src/main/java/br/com/desafiofullstack/domain/Credito.java
+/home/sergio-ufpi/desafio-tecnico-fullstack-creditos/backend/src/main/java/br/com/desafiofullstack/dto/CreditoResponseDto.java
+/home/sergio-ufpi/desafio-tecnico-fullstack-creditos/backend/src/main/java/br/com/desafiofullstack/repositories/CreditoRepository.java
+/home/sergio-ufpi/desafio-tecnico-fullstack-creditos/backend/src/main/java/br/com/desafiofullstack/resources/CreditoResource.java
+/home/sergio-ufpi/desafio-tecnico-fullstack-creditos/backend/src/main/java/br/com/desafiofullstack/resources/exceptions/FieldMessage.java
+/home/sergio-ufpi/desafio-tecnico-fullstack-creditos/backend/src/main/java/br/com/desafiofullstack/resources/exceptions/ResourceExceptionHandler.java
+/home/sergio-ufpi/desafio-tecnico-fullstack-creditos/backend/src/main/java/br/com/desafiofullstack/resources/exceptions/StandardError.java
+/home/sergio-ufpi/desafio-tecnico-fullstack-creditos/backend/src/main/java/br/com/desafiofullstack/resources/exceptions/ValidationError.java
+/home/sergio-ufpi/desafio-tecnico-fullstack-creditos/backend/src/main/java/br/com/desafiofullstack/services/CreditoService.java
+/home/sergio-ufpi/desafio-tecnico-fullstack-creditos/backend/src/main/java/br/com/desafiofullstack/services/exceptions/DataIntegrityException.java
+/home/sergio-ufpi/desafio-tecnico-fullstack-creditos/backend/src/main/java/br/com/desafiofullstack/services/exceptions/ObjectNotFoundException.java
