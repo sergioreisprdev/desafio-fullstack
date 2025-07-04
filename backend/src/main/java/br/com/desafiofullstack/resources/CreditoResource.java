@@ -70,11 +70,5 @@ public class CreditoResource {
 	    List<CreditoResponseDto> creditos = creditoService.getAllCreditos();
 	    return new ResponseEntity<>(creditos, HttpStatus.OK);
 	}
-	
-	@GetMapping("/teste")
-	public ResponseEntity<String> teste() {
-	    return ResponseEntity.ok("API está funcionando");
-	}
-
 
 }
